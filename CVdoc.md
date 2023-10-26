@@ -56,7 +56,7 @@ Statistics graduate student at the University of Nebraska Lincoln #would prefer 
 
     -   #very unsure on what to put here/how to word it
 
--   Visualization Sofware #this group was hard to come up for
+-   Visualization Software #this group was hard to come up for
 
     -   Photo editing
 
