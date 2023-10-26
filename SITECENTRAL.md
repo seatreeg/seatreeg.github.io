@@ -2,6 +2,7 @@
 title: "SITECENTRAL"
 format: html
 editor: visual
+output: md
 ---
 
 ## Quarto
