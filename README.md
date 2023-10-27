@@ -5,4 +5,4 @@ real site, trying to make it work
 
 [link to html slides](sweavyquartoproduction.html#/title-slide)
 
-[link to pdf slides](sweavyrnwproduction.rnw)
+[link to pdf slides](sweavyrnwproduction.Rnw)
