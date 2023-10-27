@@ -1,0 +1,61 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+
+\title{STAT 850 Pages}
+\author{Carson Trego}
+\date{October 2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+{\small this is my favorite animal, the tuffed deer}
+\includegraphics[scale=0.20]{Tufteddeer-2}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Plot I made to get a better intuition for the probability integral transform}
+<<plotted1, echo=FALSE, fig.width=4, fig.height=4, out.width='.7\\textwidth'>>=
+itero=0.1
+xx=seq(-5,5,.001)
+xxb=seq(.01,.99,.001)
+
+lineseq=seq(0,1,.1)
+
+yy1=dnorm(xx)
+yy2=pnorm(xx)
+
+xcord=2
+
+plot(xx,yy2,col="blue",ylim=c(-xcord+2,xcord-1), xlim=c(-xcord,xcord))
+points(xx,yy1)
+for (x in lineseq){
+  abline(h=x);
+  abline(v=qnorm(x))
+}
+@
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Plot I made to show (somewhat) how the sampling distribution changes with larger sample size...but in 3D!}
+<<plotted2, echo=FALSE, fig.width=4, fig.height=4, out.width='.7\\textwidth'>>=
+funcy <- function (x, y) {
+  return (dnorm(x,mean=0, sd=35/y))
+}
+
+x <- seq(-40, 40, length= 100)
+y <- seq(1, 5, length= 30)
+z <- outer(x, y, funcy)
+
+z[is.na(z)] <- 1
+op <- par(bg = "grey10")
+
+xpx=15
+
+persp(x, y, z, theta = xpx*10, phi = 15, expand = 0.5, col = "green", border="darkgreen")
+xpx=xpx+1
+@
+\end{frame}
+
+\end{document}
