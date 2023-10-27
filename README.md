@@ -1,9 +1,8 @@
 # seatreeg.github.io
-real site, trying to make it work bystuff
-[link to actual central](SITECENTRAL.md) 
+real site, trying to make it work 
 
-updatetest
+[link to cv](CVdoc.md) 
 
-[link to actual central](CVdoc.md) 
+[link to html slides](sweavyquartoproduction.html)
 
-popopo22222
+[link to pdf slides](sweavyrnwproduction.html)
