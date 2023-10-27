@@ -10,6 +10,10 @@
 \maketitle
 
 \begin{frame}
+Carson Trego is a statistician working with the university of Nebraska-Lincoln. Carson is most well known for the Carson Distribution, which is a special case of the Gamma distribution.
+\end{frame}
+
+\begin{frame}
 {\small this is my favorite animal, the tuffed deer}
 \includegraphics[scale=0.20]{Tufteddeer-2}
 \end{frame}
