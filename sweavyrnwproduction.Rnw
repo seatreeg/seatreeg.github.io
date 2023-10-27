@@ -62,4 +62,9 @@ xpx=xpx+1
 @
 \end{frame}
 
+\begin{frame}
+{\small here is my cv}
+\href{https://seatreeg.github.io/CVdoc.html}{mycv}
+\end{frame}
+
 \end{document}

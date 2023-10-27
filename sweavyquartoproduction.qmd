@@ -53,3 +53,9 @@ xpx=15
 persp(x, y, z, theta = xpx*10, phi = 15, expand = 0.5, col = "green", border="darkgreen")
 xpx=xpx+1
 ```
+
+# Link to CV
+
+\- heres my CV
+
+\- [link to CV](https://seatreeg.github.io/CVdoc.html)
