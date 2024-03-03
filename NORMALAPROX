@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>STANDARDIZATION APPLET</title>
+<link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid green;
+  }
+  .hidden-value {
+    visibility: hidden;
+  }
+  .cell-title {
+    font-weight: bold;
+  }
+  
+          body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000000;
+            color: green;
+          }
+          table {
+             border-collapse: collapse; 
+            border: 2px solid green; 
+          }
+          button {
+            position: ;
+            bottom: 20px;
+            
+            background-color: GREEN;
+            color: BLACK;
+            padding: 10px 20px;
+            font-family: 'Press Start 2P', cursive;
+            border: none;
+            cursor: pointer;
+          }
+          button:not(:last-of-type) {
+              margin-left: 10px;
+          }
+          .hidden {
+              display: none;
+          }
+          #asciiArt {
+              width: 600px;
+              height: 600px;
+              overflow: auto;
+              white-space: pre;
+              font-family: 'Courier New', monospace;
+              border: 2px solid black;
+              box-sizing: border-box;
+              font-size: 7px; 
+              line-height: .5;
+          }
+          #numberForm {
+              font-family: 'Press Start 2P', cursive;
+              display: flex;
+              flex-direction: column;
+              margin: 0;
+              height: 5vh;
+              line-height: 30px;
+              background-color: #000000; 
+              color: green; 
+          }
+          input{
+              background-color: green;
+              color: #000000;
+              border: 2px solid #000000; 
+              outline: none; 
+              box-shadow: none; 
+              font-family: 'Press Start 2P', cursive;
+          }
+          input::placeholder{
+            color: #000000;
+            font-family: 'Press Start 2P', cursive;
+          }
+          
+/* For Chrome, Safari, Edge, Opera */
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+  /* For Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+</style>
+</head>
+<body>
+
+<h2>NORMAL_APPROXIMATION_P.CBL</h2>
+
+<!-- <button onclick="printy()">PRINT</button> -->
+<!-- <div id="flashtxt" class="hidden" >AAAAAA</div> -->
+
+
+
+<pre id="asciiArt"></pre>
+    <script src="displayAscii.js"></script>
+
+
+<form id="numberForm">
+      <label for="pii">PI ----->    </ a>
+    <input type="number" id="pii" placeholder=0.5 /></br>
+    <label for="pii">n ------> </ a>
+    <input type="number" id="nn" placeholder=30 /></br>
+    <label for="pii">P HAT --></ a>
+    <input type="number" id="phat" placeholder=0.5 /></br></br>
+    <button type="button" onclick="assignValues()">Assign Variables</button>
+</form>
+
+</br></br>
+<h2>(phat-pi)/sqrt(pi*(1-pi)/n) = </h2>
+<h2 id="aproxiipii">0</h2>
+
+<!--<pre id="asciiArt" style="width: 600px; height: 400px; overflow: auto; border: 1px solid #ccc; font-family: monospace;"></pre>
+-->
+
+<script>
+
+function assignValues(){
+  const typePI = document.getElementById('pii').value || 0.5;
+  const typeNN = document.getElementById('nn').value || 30;
+  const typePHAT = document.getElementById('phat').value || 0.5;
+  
+  const aproxyPI = (typePHAT-typePI)/(typePI*(1-typePI)/typeNN)**0.5;
+  
+  document.getElementById("aproxiipii").innerText = aproxyPI;
+  
+  displayAsciiArt(typePI,typeNN,typePHAT);
+  
+  
+}
+
+//function normalPdf(inex)
+
+function applyFunctionInPlace(matrix) {
+  for (let i = 0; i < matrix.length; i++) { // Loop over rows
+    for (let j = 0; j < matrix[i].length; j++) { // Loop over columns
+      // Inline function to increment each element by 1
+      if (matrix[i][j]==' '){
+        matrix[i][j] = " ";}
+    }
+  }
+}
+
+
+
+function normGraph(matrix, pi, n) { 
+  //console.log(matrix.length);
+  const u=pi;
+  const s=(pi*(1-pi)/n)**0.5
+  
+  const hzoom=100;
+  const vzoom=10;
+  for (let i = 0; i < matrix.length; i++){
+    matrix[ Math.floor(Math.min( //AAAAAAAAH WHAT THE FUCK AAAAAAAAAAAA
+      ( 1/(2*3.14*s**2)**.5 )*2.72**(-1/2*( ( (i-((100-hzoom)/2 ))/hzoom - u)/s)**2)*vzoom
+      ,98))][i]="X";
+      
+      //console.log(Math.floor(Math.min(
+      //( 1/(2*3.14*s**2)**.5 )*2.72**(-1/2*((i-u)/s)**2)*50
+      //,98)));
+  }
+  return matrix;
+}
+
+function normPHAT(matrix, pi, n, phat) { 
+  
+  
+  //console.log(matrix.length);
+  const u=pi;
+  const s=(pi*(1-pi)/n)**0.5
+  
+  const hzoom=100;
+  const vzoom=10;
+  for (let m = 0; m < matrix.length+1000; m++){
+  for (let i = Math.floor(phat*100); i < matrix.length; i++){
+    matrix[ Math.max(Math.floor(Math.min( //AAAAAAAAH WHAT THE FUCK AAAAAAAAAAAA
+      ( 1/(2*3.14*s**2)**.5 )*2.72**(-1/2*( ( (i-((100-hzoom)/2 ))/hzoom - u)/s)**2)*vzoom-m
+      ,98)),1)][i]="X";
+      
+      //console.log(Math.floor(Math.min( //AAAAAAAAH WHAT THE flip AAAAAAAAAAAA
+      //console.log(( 1/(2*3.14*s**2)**.5 )*2.72**(-1/2*( ( (i-((100-hzoom)/2 ))/hzoom - u)/s)**2)*vzoom-m);
+      //console.log(m)
+  }}
+  return matrix;
+}
+
+
+
+// Initialize a square matrix for ASCII art
+function createMatrix(size) {
+  let matrix = [];
+  for (let i = 0; i < size; i++) {
+    matrix[i] = new Array(size).fill(' '); // Fill with spaces by default
+  }
+  return matrix;
+}
+
+// Function to convert the matrix into a string
+function matrixToString(matrix) {
+  return matrix.map(row => row.join('')).join('\n');
+}
+
+// Display ASCII art on screen
+function displayAsciiArt(typePI=.5,typeN=30,typePHAT=0.50) {
+  const size = 100; // Define the size of the square
+  let matrix = createMatrix(size);
+
+  // fill space
+  applyFunctionInPlace(matrix);
+
+  // graph normal
+  normGraph(matrix, pi=typePI, n=typeN);
+  // graph phat
+  normPHAT(matrix, pi=typePI, n=typeN, phat=typePHAT);
+  
+  //console.log(typePHAT)
+  
+  // set borders
+  for (let i = 0; i < size; i++) {
+    //matrix[i][i] = '■';
+    matrix[0][i] = '■';
+    matrix[size-1][i] = '■';
+    matrix[i][0]='■';
+    matrix[i][size-1]='■';
+    
+  }
+
+  // due to how matrix nested works, it needs to be flipped
+  matrix.reverse()
+
+  // Convert the matrix to a string
+  let asciiArtStr = matrixToString(matrix);
+
+  // Display the ASCII art in the HTML document
+  document.getElementById('asciiArt').innerText = asciiArtStr;
+  
+
+}
+
+// Call the function to display the art when the page loads
+displayAsciiArt();
+
+</script>
+
+</body>
+</html>
