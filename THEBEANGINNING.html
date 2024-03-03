@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive List Example</title>
+    <title>BLOG BLOG BLOG</title>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
@@ -10,12 +11,142 @@
             display: flex;
             margin: 0;
             height: 100vh;
+            flex-direction: column;
             line-height: 30px;
             background-color: #000000;
             color: #ff8503;
         }
+        header {
+            text-align: center;
+            padding: 200px;
+            background-color: #18191A; /* Dark background for the header */
+            color: #ff8503; 
+        }
+        .main-content {
+            display: flex;
+            flex: 1; /* Take remaining space */
+        }
+        .sidebar {
+            flex: 1;
+            background-color: #000000;
+            color: #ff8503;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .content {
+            flex: 2;
+            padding: 20px;
+        }
+        .item {
+            margin-bottom: 20px;
+        }
+        .item-row {
+            display: flex;
+            align-items: center;
+        }        
+        .title {
+            font-weight: bold;
+        }
+        input[type="radio"] {
+            display: none; /* Hide the radio button */
+        }
+        input[type="radio"] + label {
+            display: inline-block;
+            width: 20px; /* Size of the square */
+            height: 20px;
+            background-color: #ff8503;
+            margin-right: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+        input[type="radio"] + label:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ff8503;
+            color: black;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        input[type="radio"]:checked + label:before {
+            content: "X"; /* Display an X for the selected item */
+            color: black;
+        }
+        button {
+            font-family: 'Press Start 2P', cursive;
+            margin-left: 5px;
+            background-color: #000000;
+            color: #ff8503;
+        }
+        .total, .counter-list {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        /* Style the scrollbar */
+        .sidebar::-webkit-scrollbar {
+            width: 16px;
+            background-color: #000;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background-color: #000;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #ff8503;
+            border-radius: 0px;
+            border: 4px solid #000;
+        }
+        .sidebar::-webkit-scrollbar-corner {
+            background-color: black;
+        }
+        #proceed-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff8503;
+            color: BLACK;
+            padding: 10px 20px;
+            font-family: 'Press Start 2P', cursive;
+            border: none;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+        }
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loading-bar {
+            width: 0;
+            height: 20px;
+            background-color: ##ff8503;
+            transition: width 1s;
+        }
+
+    </style>
 </head>
 <body>
-BLOG BLOG BLOG BLOG
+  
+<header>SUCCESS: THE MACHINE WORKED ABOUT AS WELL AS YOU EXPECTED!</header>
+
+<div class="main-content">
+
+
+<button onclick="window.location.href='BLOGCENTER.html';">RETURN TO BLOGS</button>
+
+
+<script>
+
+</script>
+
 </body>
 </html>
