@@ -148,16 +148,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSumAndList() {
         const selected = document.querySelector('input[type="radio"]:checked');
-        let values = Array(items.length).fill(0);
         if (selected) {
-            const index = parseInt(selected.id.replace('radio-', ''));
-            values[index] = 1;
+            document.getElementById('proceed-button').style.display = 'block';
+        } else {
+            document.getElementById('proceed-button').style.display = 'none';
         }
-        document.getElementById('counter-values').textContent = JSON.stringify(values);
-        const totalBalance = 10 - values.reduce((acc, val) => acc + val, 0);
-        document.getElementById('total-count').textContent = "121,816,457 BTC"//totalBalance;
-        document.getElementById('proceed-button').style.display = totalBalance >= 0 ? 'block' : 'none';
     }
+
 
     window.showDetail = function(index) {
         content.innerHTML = items[index].detail;
