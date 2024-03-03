@@ -44,3 +44,6 @@
               margin-right: 200px;
     }
 </style>
+
+
+[NORMAL ONE PROPORTION APPLET](NORMALAPPROX.html)
