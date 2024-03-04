@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive List Example</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            line-height: 30px;
+            background-color: #000000;
+            color: #ff8503;
+        }
+        .sidebar {
+            flex: 1;
+            background-color: #000000;
+            color: #ff8503;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .content {
+            flex: 2;
+            padding: 20px;
+        }
+        .item {
+            margin-bottom: 20px;
+        }
+        .item-row { 
+            display: flex;
+            align-items: center;
+        }        
+        .title {
+            font-weight: bold;
+        }
+        input[type="radio"] {
+            display: none; /* Hide the radio button */
+        }
+        input[type="radio"] + label {
+            display: inline-block;
+            width: 20px; /* Size of the square */
+            height: 20px;
+            background-color: #ff8503;
+            margin-right: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+        input[type="radio"] + label:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ff8503;
+            color: black;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        input[type="radio"]:checked + label:before {
+            content: "X"; /* Display an X for the selected item */
+            color: black;
+        }
+        button {
+            font-family: 'Press Start 2P', cursive;
+            margin-left: 5px;
+            background-color: #000000;
+            color: #ff8503;
+        }
+        .total, .counter-list {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        /* Style the scrollbar */
+        .sidebar::-webkit-scrollbar {
+            width: 16px;
+            background-color: #000;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background-color: #000;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #ff8503;
+            border-radius: 0px;
+            border: 4px solid #000;
+        }
+        .sidebar::-webkit-scrollbar-corner {
+            background-color: black;
+        }
+        #proceed-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff8503;
+            color: BLACK;
+            padding: 10px 20px;
+            font-family: 'Press Start 2P', cursive;
+            border: none;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="total">
+        <span>CAR-BLOG HOME-PAGE<br><br><br> SELECT AN ITEM AND CLICK "GOTO SECTION" TO CONTINUE </span><span id="total-count"></span> <!--LETS HOPE ADDING THE TWO DOESNT BREAK ANYTHING-->
+    </div>
+    <div class="counter-list">
+        <br> ______________________________________
+    </div>
+</div>
+
+<div class="content">
+
+</div>
+
+<button id="proceed-button";>READ POST</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const items = [
+        { title: "CAR-BLOGS", detail: "CAR-BLOGS <br><br><br> This is my blog.<br> More specifically, this is a blog for my academic fun projects. Everything from jellybean identification and in-class activities will go here." },
+        { title: "CAR-PLETS", detail: "CAR-PLETS <br><br><br> An applet is a small application designed to perform a few basic functions. A car-plet is an applet made by Carson <br><br><br> (me)<br><br><br> I often make use these to help my students learn a certain topic better, so these may be too specific if you are a casual reader." },
+    ];
+
+    const sidebar = document.querySelector('.sidebar');
+    const content = document.querySelector('.content');
+
+    items.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'item';
+        itemElement.innerHTML = `
+            <span class="title">${item.title}</span>
+            <input type="radio" name="itemSelection" id="radio-${index}" onclick="updateSelection(${index})">
+            <label for="radio-${index}"></label>
+            <button onclick="showDetail(${index})">LEARN MORE</button>
+        `;
+        sidebar.appendChild(itemElement);
+    });
+
+    window.updateSelection = function(index) {
+        updateSumAndList();
+    };
+
+    function updateSumAndList() {
+        const selected = document.querySelector('input[type="radio"]:checked');
+        if (selected) {
+            document.getElementById('proceed-button').style.display = 'block';
+        } else {
+            document.getElementById('proceed-button').style.display = 'none';
+        }
+    }
+
+
+    window.showDetail = function(index) {
+        content.innerHTML = items[index].detail;
+    };
+
+
+  document.getElementById("proceed-button").addEventListener('click', function() {
+      //document.getElementById('loadingContainer').style.display = 'flex'; // Show loading container
+      simulateLoading();
+  });
+  
+  function simulateLoading() {
+  
+    //FINDING RESULTS
+  
+    console.log(document.querySelector('input[type="radio"]:checked').onclick );
+    
+    const onclickString = document.querySelector('input[type="radio"]:checked').onclick.toString();
+    
+    let numberout;//javascript
+    // Use a regular expression to find the number in the function call
+    const match = onclickString.match(/updateSelection\((\d+)\)/);
+    
+    if (match) {
+        numberout = parseInt(match[1], 10); // Convert the captured string to an integer
+        console.log(numberout); 
+    } else {
+        console.log("NAN");
+    }
+    
+    
+    
+    //USING RESULTS
+    console.log(numberout); 
+    var condition = (numberout==3); // true onot
+    var loadingBar = document.getElementById('loadingBar');
+    var width = 0;
+    //var interval = setInterval(frame, 10); // Adjust time here to control speed
+
+    if (numberout==0){
+      window.location.href = 'BLOGCENTER.html'; 
+    }
+    if (numberout==1){
+      window.location.href = 'CARPLETS.html'; 
+    }
+    if (numberout==2){
+      window.location.href = 'NULL.html'; 
+    }
+
+}
+  
+  
+});
+</script>
+
+</body>
+</html>
