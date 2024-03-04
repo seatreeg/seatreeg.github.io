@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CONDITIONAL PRACTICE</title>
+<link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid green;
+  }
+  .hidden-value {
+    visibility: hidden;
+  }
+  .cell-title {
+    font-weight: bold;
+  }
+  
+          body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000000;
+            color: green;
+          }
+          table {
+             border-collapse: collapse; 
+            border: 2px solid green; 
+          }
+          button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: GREEN;
+            color: BLACK;
+            padding: 10px 20px;
+            font-family: 'Press Start 2P', cursive;
+            border: none;
+            cursor: pointer;
+          }
+          button:not(:last-of-type) {
+              margin-right: 200px;
+          }
+</style>
+</head>
+<body>
+
+<h2>CONDITIONAL PRACTICE</h2>
+
+<button onclick="toggleVisibility()">Toggle Hidden Values</button>
+<button onclick="updateValues()">New Values</button>
+
+<table>
+  <tr>
+    <th></th> 
+    <th>A</th>
+    <th>B</th>
+    <th>TOTALS</th>
+    <th>P(A|__)</th>
+    <th>P(B|__)</th>
+  </tr>
+  
+  <tr>
+    <td>C</td>
+    <td><div class="cell-title">P(AnC)</div><span id="PANC">0</span></td>
+    <td><div class="cell-title">P(BnC)</div><span id="PBNC">0</span></td>
+    <td><div class="cell-title">P(C)</div><span id="PC" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(A|C)</div><span id="PAGC" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(B|C)</div><span id="PBGC" class="hidden-value">0</span></td>
+<!--    <td><div class="cell-title">Title A5</div><span>Value 5</span></td> -->
+  </tr>
+  
+  
+  <tr>
+    <td>D</td>
+    <td><div class="cell-title">P(AnD)</div><span id="PAND">0</span></td>
+    <td><div class="cell-title">P(BnD)</div><span id="PBND">0</span></td>
+    <td><div class="cell-title">P(D)</div><span id="PD" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(A|D)</div><span id="PAGD" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(B|D)</div><span id="PBGD"class="hidden-value">0</span></td>
+<!--    <td><div class="cell-title">Title A5</div><span>Value 5</span></td> -->
+  </tr>
+  
+    <td>TOTALS</td>
+    <td><div class="cell-title">P(A)</div><span id="PA" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(B)</div><span id="PB" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(S)</div><span class="hidden-value">100</span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+  </tr>
+  
+  
+  <tr>
+    <td>P(C|__)</td>
+    <td><div class="cell-title">P(C|A)</div><span id="PCGA" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(C|B)</div><span id= "PCGB" class="hidden-value">0</span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+  </tr>
+  
+  
+  <tr>
+    <td>P(D|__)</td>
+    <td><div class="cell-title">P(D|A)</div><span id="PDGA" class="hidden-value">0</span></td>
+    <td><div class="cell-title">P(D|B)</div><span id="PDGB" class="hidden-value">0</span></span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+    <td><div class="cell-title"></div><span class="hidden-value"></span></td>
+  </tr>
+  
+</table>
+
+<script>
+
+
+
+  function toggleVisibility() {
+    const elements = document.querySelectorAll('.hidden-value');
+    for (const element of elements) {
+      element.style.visibility = element.style.visibility === 'hidden' ? 'visible' : 'hidden';
+    }
+  }
+
+  function clearTable() {
+    const table = document.getElementById('valuesTable');
+    while (table.rows.length > 1) {
+      table.deleteRow(1);
+    }
+  }
+  
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      }
+    }
+
+    function sampleWithoutReplacement(rangeStart, rangeEnd, sampleSize) {
+        const numbers = Array.from({ length: rangeEnd - rangeStart + 1 }, (_, i) => i + rangeStart);
+        shuffleArray(numbers);
+        return numbers.slice(0, sampleSize);
+    }
+    
+    function rndTwo(num) {
+      return Math.round((num + Number.EPSILON) * 100);
+    }
+
+//const sampledNumbers = sampleWithoutReplacement(1, 100, 4)
+
+  function updateValues() {
+    
+    const rangen  = sampleWithoutReplacement(1, 99, 4)
+    rangen.sort((a, b) => a - b);
+    
+    const vpanc = rangen[0];
+    const vpbnc = rangen[1]-rangen[0];
+    const vpand = rangen[2]-(rangen[1]);
+    const vpbnd = 100-(rangen[2]);
+    
+    const vpc = vpanc+vpbnc;
+    const vpd = vpand+vpbnd;
+    
+    const vpa = vpanc+vpand;
+    const vpb = vpbnc+vpbnd;
+    
+    
+    
+    //DEFAULTS
+    document.getElementById("PANC").innerText = vpanc;
+    document.getElementById("PBNC").innerText = vpbnc;
+    document.getElementById("PAND").innerText = vpand;
+    document.getElementById("PBND").innerText = vpbnd;
+    
+    //TOTS1
+    document.getElementById("PC").innerText = vpc;
+    document.getElementById("PD").innerText = vpd;
+    
+    //TOTS2
+    document.getElementById("PA").innerText = vpa;
+    document.getElementById("PB").innerText = vpb;
+    
+    //COND UPPER RIGHT
+    document.getElementById("PAGC").innerText = rndTwo(vpanc/vpc);
+    document.getElementById("PBGC").innerText = rndTwo(vpbnc/vpc);
+    document.getElementById("PAGD").innerText = rndTwo(vpand/vpd);
+    document.getElementById("PBGD").innerText = rndTwo(vpbnd/vpd);
+    
+    //COND LOWER LEFT
+    document.getElementById("PCGA").innerText = rndTwo(vpanc/vpa);
+    document.getElementById("PDGA").innerText = rndTwo(vpand/vpa);
+    document.getElementById("PCGB").innerText = rndTwo(vpbnc/vpb);
+    document.getElementById("PDGB").innerText = rndTwo(vpbnd/vpb);
+  }
+
+  
+  //window.onload = updateValues;
+</script>
+
+</body>
+</html>
